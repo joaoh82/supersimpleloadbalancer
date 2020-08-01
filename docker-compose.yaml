@@ -1,0 +1,14 @@
+version: "3"
+services:
+  loadbalancer:
+    build: .
+    container_name: load-balancer
+    ports:
+      - "3030:3030"
+    command: --backends "http://server1:80,http://server2:80,http://server3:80"
+  server1:
+    image: strm/helloworld-http
+  server2:
+    image: strm/helloworld-http
+  server3:
+    image: strm/helloworld-http
